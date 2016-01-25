@@ -115,7 +115,7 @@ public class myFetchService extends IntentService
                 if (matches.length() == 0) {
                     //if there is no data, call the function on dummy data
                     //this is expected behavior during the off season.
-                    processJSONdata(getString(R.string.dummy_data), getApplicationContext(), false);
+                    //processJSONdata(getString(R.string.dummy_data), getApplicationContext(), false);
                     return;
                 }
 
