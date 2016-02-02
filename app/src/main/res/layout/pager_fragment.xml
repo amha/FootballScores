@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="?attr/colorPrimary"
-        android:elevation="6dp"
+        android:contentDescription="@string/pager_title_desc"
+        android:elevation="@dimen/match_card_elevation"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
@@ -20,13 +21,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
         android:background="?attr/colorPrimary"
-        android:elevation="6dp"
+        android:elevation="@dimen/match_card_elevation"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

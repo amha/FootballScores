@@ -1,16 +1,33 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context="barqsoft.footballscores.AboutActivity$PlaceholderFragment">
 
-    <TextView android:text="@string/about_text"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/about_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:contentDescription="@string/pager_title_desc"
+        android:elevation="@dimen/match_card_elevation"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="12sp"
-        />
+        android:gravity="left"
+        android:text="@string/about_text"
+        android:textSize="16sp"
+        android:padding="16dp"
+        android:scrollbars="vertical"
+        android:lineSpacingMultiplier="1.2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/about_toolbar"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

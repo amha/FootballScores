@@ -3,7 +3,12 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="list_horizonal_matgin">2dp</dimen>
-    <dimen name="share_button_margin">150dp</dimen>
+
+    <!-- Pager Layout -->
+    <dimen name="match_card_elevation">6dp</dimen>
+
+    <!-- Match Details -->
+    <dimen name="share_button_margin">150dp</dimen>s
     <dimen name="TeamNames">14sp</dimen>
     <dimen name="Score">30sp</dimen>
     <dimen name="League">15sp</dimen>

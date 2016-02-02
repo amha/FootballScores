@@ -10,15 +10,27 @@ import android.view.MenuItem;
 public class MainActivity extends ActionBarActivity
 {
     public static int selected_match_id;
-    public static int current_fragment = 2;
+
+    /**
+     * Determines which tab will be active by default.
+     */
+    public static int current_fragment = 1;
+
+    //TODO: Delete Log_TAG before submitting project.
     public static String LOG_TAG = "MainActivity";
     private final String save_tag = "Save Test";
+
+    // The main app screen.
     private PagerFragment my_main;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //
         Log.d(LOG_TAG, "Reached MainActivity onCreate");
+
+        // Check if this is the first time running the app.
         if (savedInstanceState == null) {
             my_main = new PagerFragment();
             getSupportFragmentManager().beginTransaction()

@@ -50,19 +50,36 @@ public class PagerFragment extends Fragment {
             }
         });
 
+        // Creating 3 tabs
         TabLayout tabLayout = (TabLayout) rootView.findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Recent"));
-        tabLayout.addTab(tabLayout.newTab().setText("Today"));
-        tabLayout.addTab(tabLayout.newTab().setText("Upcoming"));
+        tabLayout.addTab(tabLayout
+                .newTab()
+                .setText(R.string.tab1)
+                .setContentDescription(R.string.tab1_desc));
+
+        tabLayout.addTab(tabLayout
+                .newTab()
+                .setText(R.string.tab2)
+                .setContentDescription(R.string.tab2_desc));
+
+        tabLayout.addTab(tabLayout
+                .newTab()
+                .setText(R.string.tab3)
+                .setContentDescription(R.string.tab3_desc));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
+        // Creating fragments for each tab.
         for (int i = 0; i < NUM_PAGES; i++) {
-            Date fragmentdate = new Date(System.currentTimeMillis() + ((i - 2) * 86400000));
+
+            Date fragmentdate = new Date(System.currentTimeMillis()
+                    + ((i - 2) * 86400000));
             SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
+
             viewFragments[i] = new MainScreenFragment();
             viewFragments[i].setFragmentDate(mformat.format(fragmentdate));
         }
 
+        // Add tap handler for tabs
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -79,9 +96,11 @@ public class PagerFragment extends Fragment {
 
             }
         });
+
         mPagerHandler.setAdapter(mPagerAdapter);
         mPagerHandler.setCurrentItem(MainActivity.current_fragment);
-        mPagerHandler.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        mPagerHandler.addOnPageChangeListener(
+                new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         return rootView;
     }
 
