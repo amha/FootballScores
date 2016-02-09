@@ -1,5 +1,6 @@
 package barqsoft.footballscores;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -16,36 +17,22 @@ public class AboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+
+        // Get toolbar and configure for this activity
+        Toolbar toolbar = (Toolbar) findViewById(R.id.about_toolbar);
+        toolbar.setTitle(R.string.about);
+        setSupportActionBar(toolbar);
+
+        // Set up navigation
+        android.support.v7.app.ActionBar aBar = getSupportActionBar();
+        aBar.setDisplayHomeAsUpEnabled(true);
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
     }
-
-/*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_about, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-    */
 
     /**
      * A placeholder fragment containing a simple view.
@@ -58,11 +45,7 @@ public class AboutActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View layout = inflater.inflate(R.layout.fragment_about, container, false);
-
-            Toolbar toolbar = (Toolbar) layout.findViewById(R.id.about_toolbar);
-            toolbar.setTitle(R.string.about);
-            return layout;
+            return inflater.inflate(R.layout.fragment_about, container, false);
         }
     }
 }
