@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -73,15 +74,12 @@ public class PagerFragment extends Fragment {
         // Creating fragments for each tab.
         for (int i = 0; i < NUM_PAGES; i++) {
 
-            Date fragmentdate = new Date(System.currentTimeMillis()
-                    + ((i - 2) * 86400000));
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(Calendar.DATE, i - 1);
             SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
 
             viewFragments[i] = new MainScreenFragment();
-            viewFragments[i].setFragmentDate(mformat.format(fragmentdate));
-            Log.d("AMHA", i + "th, mainScreenFragment created");
-
-            //viewFragments[i].setRetainInstance(true);
+            viewFragments[i].setFragmentDate(mformat.format(calendar.getTime()));
         }
 
         // Add tap handler for tabs
@@ -103,14 +101,9 @@ public class PagerFragment extends Fragment {
         });
 
         mPagerHandler.setAdapter(mPagerAdapter);
-        Log.d("AMHA", "Adapter Set");
-
         mPagerHandler.setCurrentItem(MainActivity.current_fragment);
-        Log.d("AMHA", "Current item set");
-
         mPagerHandler.addOnPageChangeListener(
                 new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        Log.d("AMHA", "OnPageChangeListener set and returning view");
 
         return rootView;
     }

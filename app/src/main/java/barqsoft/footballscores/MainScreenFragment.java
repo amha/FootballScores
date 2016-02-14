@@ -2,6 +2,7 @@ package barqsoft.footballscores;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -12,7 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import barqsoft.footballscores.service.myFetchService;
 
@@ -23,41 +26,45 @@ public class MainScreenFragment extends Fragment implements LoaderManager.Loader
     public scoresAdapter mAdapter;
     public static final int SCORES_LOADER = 0;
     private String[] fragmentdate = new String[1];
-    private int last_selected_item = -1;
 
     public MainScreenFragment() {
     }
 
     private void update_scores() {
         Intent service_start = new Intent(getActivity(), myFetchService.class);
-        Log.d("AMHA", "About to start the service");
-
         getActivity().startService(service_start);
-        Log.d("AMHA", "Service started");
     }
 
     public void setFragmentDate(String date) {
-        Log.d("AMHA", "Date value in MainScreenFragment : " + date);
         fragmentdate[0] = date;
-
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            fragmentdate[0] = savedInstanceState.getString("savedFragmentDate");
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              final Bundle savedInstanceState) {
         update_scores();
-        Log.d("AMHA", "We made it past update_scores");
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         final ListView score_list = (ListView) rootView.findViewById(R.id.scores_list);
 
+        // Display the empty view if the adapter is empty
+        LinearLayout emptyLayout = (LinearLayout) rootView.findViewById(R.id.empty_layout);
+        score_list.setEmptyView(emptyLayout);
 
         mAdapter = new scoresAdapter(getActivity(), null, 0);
-        getLoaderManager().initLoader(SCORES_LOADER, null, this);
-
         score_list.setAdapter(mAdapter);
 
+        // Initialize loader
+        getLoaderManager().initLoader(SCORES_LOADER, null, this);
         mAdapter.detail_match_id = MainActivity.selected_match_id;
 
         score_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -70,6 +77,12 @@ public class MainScreenFragment extends Fragment implements LoaderManager.Loader
             }
         });
         return rootView;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("savedFragmentDate", fragmentdate[0]);
     }
 
     @Override

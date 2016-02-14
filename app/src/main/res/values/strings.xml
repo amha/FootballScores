@@ -21,6 +21,11 @@
     <string name="tab1_desc">Tab 1 Recent Football Scores</string>
     <string name="tab2_desc">Tab 2 Today\'s Football Scores</string>
     <string name="tab3_desc">Tab 3 Upcoming Football Matches</string>
+    <string name="empty_image_icon">Icon of a cloud</string>
+
+    <!-- Empty Text -->
+    <string name="empty_title">No Scores Available</string>
+    <string name="empty_copy">Well, look what happened here. We didn\'t find any scores for this day.</string>
 
     <!-- Pager Fragment -->
     <string name="tab1">Recent</string>
@@ -55,6 +60,12 @@
 
         During the off season, fake data will be added to the app.
     </string>
+
+    <!-- Widget -->
+    <string name="appwidget_text">Widget</string>
+    <string name="add_widget">Add widget</string>
+    <string name="widget_home_team_desc">Home Team</string>
+    <string name="widget_away_team_desc">Away Team</string>
 
 
 </resources>

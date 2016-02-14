@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@color/material_grey_50">
+
+    <TextView
+        android:id="@+id/widget_home_team"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:text="@string/widget_home_team_desc"
+        android:textColor="@color/blue01"
+        android:contentDescription="@string/widget_home_team_desc"/>
+
+    <TextView
+        android:id="@+id/widget_away_team"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:textColor="@color/green01"
+        android:text="@string/widget_away_team_desc"
+        android:contentDescription="@string/widget_home_team_desc"/>
+
+</LinearLayout>
