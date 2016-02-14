@@ -5,7 +5,6 @@
     <string name="app_name">Football Scores</string>
     <string name="action_settings">Settings</string>
     <string name="widget_text">This is a widget probably.</string>
-    <string name="api_key">ec036e5e309542aab9cd036ba17598da</string>
 
     <!-- Dummy text -->
     <string name="hello_world">Hello world!</string>
