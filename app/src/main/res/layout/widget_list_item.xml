@@ -1,27 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="8dp"
-    android:background="@color/material_grey_50">
+    android:layout_height="70dp"
+    android:layout_margin="10dp"
+    android:background="@color/material_grey_50"
+    android:orientation="horizontal"
+    android:padding="8dp">
 
-    <TextView
-        android:id="@+id/widget_home_team"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="4dp"
-        android:text="@string/widget_home_team_desc"
-        android:textColor="@color/blue01"
-        android:contentDescription="@string/widget_home_team_desc"/>
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/widget_away_team"
+
+        <ImageView
+            android:id="@+id/widget_time_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/widget_icon_clock"
+            android:src="@drawable/ic_access_time_black_24dp" />
+
+        <TextView
+            android:id="@+id/widget_time_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/widget_time_icon"
+            android:contentDescription="@string/widget_time"
+            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
+            android:text="1"
+            android:textColor="@color/text_color"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="4dp"
-        android:textColor="@color/green01"
-        android:text="@string/widget_away_team_desc"
-        android:contentDescription="@string/widget_home_team_desc"/>
+        android:layout_gravity="center_vertical"
+        android:layout_weight="2">
+
+        <ImageView
+            android:id="@+id/widget_team_icon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/widget_icon_ball"
+            android:src="@drawable/no_icon" />
+
+        <TextView
+            android:id="@+id/widget_home_team"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/widget_team_icon"
+            android:layout_marginLeft="9dp"
+            android:layout_marginStart="9dp"
+            android:layout_toEndOf="@+id/widget_team_icon"
+            android:layout_toRightOf="@+id/widget_team_icon"
+            android:contentDescription="@string/widget_home_team_desc"
+            android:ellipsize="end"
+            android:paddingTop="4dp"
+            android:text="@string/widget_home_team_desc"
+            android:textColor="@color/text_color"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/widget_away_team"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/widget_home_team"
+            android:layout_alignStart="@+id/widget_home_team"
+            android:layout_below="@+id/widget_team_icon"
+            android:contentDescription="@string/widget_home_team_desc"
+            android:ellipsize="end"
+            android:paddingTop="5dp"
+            android:text="@string/widget_away_team_desc"
+            android:textColor="@color/text_color"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
 
 </LinearLayout>

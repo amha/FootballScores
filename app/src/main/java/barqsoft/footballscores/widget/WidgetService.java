@@ -18,7 +18,7 @@ import barqsoft.footballscores.R;
 import barqsoft.footballscores.scoresAdapter;
 
 /**
- * Created by amhamogus on 2/10/16.
+ * Responsible for calling the widget collection adapter.
  */
 public class WidgetService extends RemoteViewsService {
 
@@ -27,6 +27,9 @@ public class WidgetService extends RemoteViewsService {
         return new FootballRemoteViewFactory(this, intent);
     }
 
+    /**
+     * Acts as an adapter for the app widget.
+     */
     class FootballRemoteViewFactory implements RemoteViewsService.RemoteViewsFactory {
 
         int count;
@@ -55,13 +58,8 @@ public class WidgetService extends RemoteViewsService {
                     todayDate,
                     null
             );
-            count = cursor.getCount();
-
-            // Check if we have matches for today
-            if (!cursor.moveToNext()) {
-                Log.d("AMHA", "failed to get data from the content provider");
-            } else {
-                Log.d("AMHA", "Cursor count = " + cursor.getCount());
+            if(cursor != null) {
+                count = cursor.getCount();
             }
         }
 
@@ -83,11 +81,12 @@ public class WidgetService extends RemoteViewsService {
             RemoteViews view =
                     new RemoteViews(appContext.getPackageName(), R.layout.widget_list_item);
 
-            // Todo: map data to views here
-            cursor.moveToPosition(position);
-            view.setTextViewText(R.id.widget_home_team, cursor.getString(scoresAdapter.COL_HOME));
-            view.setTextViewText(R.id.widget_away_team, cursor.getString(scoresAdapter.COL_AWAY));
-
+            if (cursor != null) {
+                cursor.moveToPosition(position);
+                view.setTextViewText(R.id.widget_home_team, cursor.getString(scoresAdapter.COL_HOME));
+                view.setTextViewText(R.id.widget_away_team, cursor.getString(scoresAdapter.COL_AWAY));
+                view.setTextViewText(R.id.widget_time_textview, cursor.getString(scoresAdapter.COL_MATCHTIME));
+            }
             return view;
         }
 

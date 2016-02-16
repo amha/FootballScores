@@ -46,6 +46,7 @@ public class FootballScoresAppWidget extends AppWidgetProvider {
 
         views.setRemoteAdapter(R.id.widget_list_view,
                 new Intent(context, WidgetService.class));
+        views.setEmptyView(R.id.widget_list_view, R.id.empty_widget_layout);
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
 
