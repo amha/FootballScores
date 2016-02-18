@@ -22,6 +22,9 @@
     <string name="tab2_desc">Tab 2 Today\'s Football Scores</string>
     <string name="tab3_desc">Tab 3 Upcoming Football Matches</string>
     <string name="empty_image_icon">Icon of a cloud</string>
+    <string name="detail_league_name">The name of the league</string>
+    <string name="detail_match_day">The date ofthe match</string>
+    <string name="detail_share_icon">An Icon that denotes sharing of match information</string>
 
     <!-- Empty Text -->
     <string name="empty_title">No Scores Available</string>

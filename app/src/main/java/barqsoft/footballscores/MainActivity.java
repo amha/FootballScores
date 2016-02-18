@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -44,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
                         .add(R.id.container, my_main)
                         .commit();
             }
-        }
-        else{
+        } else {
             connected = false;
             // Show alert dialog because there is no internet connectivity.
             AlertDialog.Builder alertContent = new AlertDialog.Builder(this);
@@ -93,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        if(connected) {
+        if (connected) {
             outState.putInt("Pager_Current", my_main.mPagerHandler.getCurrentItem());
             outState.putInt("Selected_match", selected_match_id);
             getSupportFragmentManager().putFragment(outState, "my_main", my_main);
@@ -103,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        if(connected) {
+        if (connected) {
             current_fragment = savedInstanceState.getInt("Pager_Current");
             selected_match_id = savedInstanceState.getInt("Selected_match");
             my_main = (PagerFragment) getSupportFragmentManager().getFragment(savedInstanceState, "my_main");
